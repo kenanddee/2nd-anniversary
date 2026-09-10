@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="A little love letter, just for you.">
+  <title>A Secret For You ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- DESKTOP WARNING OVERLAY -->
+<div id="desktopWarning" class="desktop-warning">
+  <!-- Layer 1: Blurred Custom Image Background -->
+  <div class="warning-bg"></div>
+
+  <!-- Layer 2: Pure Glass Card -->
+  <div class="warning-glass-card">
+    <div class="sticker-container">
+      <img src="/gif/warning.gif" alt="Toro Inoue Cat" class="toro-sticker">
+    </div>
+    <h2 class="warning-title">Oopsie!</h2>
+    <p class="warning-text">This cute little surprise was built just for phone screens. Please open this link on your mobile to view it! 💕</p>
+  </div>
+</div>
+
+  <!-- FIXED MASTER BACKGROUND (Seamless for all sections) -->
+  <div class="bg-photo bg-lock" id="bgLock"></div>
+  <div class="bg-photo bg-main hidden" id="bgMain"></div>
+  <div class="bg-overlay" id="bgOverlay"></div>
+
+  <!-- AMBIENT FLOATING HEARTS (starts after envelope opens) -->
+  <div class="hearts-field" id="heartsField" aria-hidden="true"></div>
+
+  <!-- FLOATING ENVELOPE SCREEN -->
+  <div class="lock-overlay" id="lockOverlay">
+    <div class="float-wrapper">
+      <div class="envelope-card" id="envelopeBtn" role="button" tabindex="0" aria-label="Open your letter">
+        <img src="img/envelope.png" alt="Envelope" class="envelope-img">
+      </div>
+      <div class="envelope-shadow"></div>
+      <p class="tap-hint">Tap the envelope to open 💌</p>
+    </div>
+  </div>
+
+  <!-- WHITE FLASH TRANSITION -->
+  <div class="flash-screen" id="flashScreen"></div>
+
+  <!-- MAIN INTERFACE -->
+  <main class="main-content hidden" id="mainContent">
+
+    <!-- HIDDEN AUDIO ELEMENT -->
+    <!-- EDIT: point this at your own song file inside a /sound folder -->
+    <audio id="bgMusic" loop src="sound/seasons.mp3"></audio>
+
+    <!-- GLASSY DYNAMIC ISLAND MUSIC NOTCH -->
+    <div class="music-notch-container">
+      <div class="dynamic-music-notch" id="musicNotch" role="button" tabindex="0" aria-label="Play or pause our song">
+        <div class="notch-album-art">
+          <img src="img/notch.jpg" alt="Album Cover" id="notchArt">
+        </div>
+        <div class="notch-info">
+          <span class="notch-title">Our Song</span>
+          <span class="notch-status" id="notchStatus">Playing</span>
+        </div>
+        <div class="notch-eq playing" id="notchEq">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1 · HERO -->
+    <section class="anniversary-hero">
+      <div class="hero-text" id="titleContainer">
+        <div class="line-1">
+          <span class="word-happy">Happy</span>
+          <span class="word-2nd">
+            2nd
+            <img src="img/doodle1.png" alt="" class="doodle-2nd">
+          </span>
+        </div>
+        <span class="line-2">Anniversary</span>
+        <span class="line-3">my love</span>
+      </div>
+      <div class="scroll-cue anim-fade-late" aria-hidden="true">
+        <span></span>
+        <p>scroll for your surprise</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 · LOVE COUNTER -->
+    <section class="counter-section">
+      <p class="counter-kicker anim-on-scroll">every second, counted</p>
+      <h2 class="counter-heading anim-on-scroll">Time we've spent falling deeper in love</h2>
+
+      <div class="counter-card anim-on-scroll">
+        <div class="counter-grid">
+          <div class="counter-box">
+            <span class="counter-num" id="countDays">00</span>
+            <span class="counter-label">days</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="countHours">00</span>
+            <span class="counter-label">hours</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="countMins">00</span>
+            <span class="counter-label">mins</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="countSecs">00</span>
+            <span class="counter-label">secs</span>
+          </div>
+        </div>
+        <p class="counter-footnote">...and I'd happily count forever more.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 3 · MEMORIES & LETTER -->
+    <section class="memory-section">
+
+      <div class="photo-card card-left anim-on-scroll">
+        <div class="photo-inner">
+          <img src="img/cover1.jpg" alt="Our Memory 1">
+        </div>
+      </div>
+
+      <div class="glass-letter-card anim-on-scroll">
+        <h2 class="script-subtitle">Two Years of Us</h2>
+        <div class="card-divider"></div>
+        <p class="letter-text">
+          Every moment with you feels like a beautiful dream I never want to wake up from. Thank you for filling my life with endless warmth, laughter, and unforgettable magic. Here's to us and forever. ❤️
+        </p>
+      </div>
+
+      <div class="photo-card card-right anim-on-scroll">
+        <div class="photo-inner">
+          <img src="img/cover2.jpg" alt="Our Memory 2">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 4 · REASONS I LOVE YOU (tap to flip) -->
+    <section class="reasons-section">
+      <div class="reasons-header anim-on-scroll">
+        <p class="reasons-kicker">just a few of many</p>
+        <h2 class="reasons-title">Reasons I Love You</h2>
+        <p class="reasons-hint">tap a card, my love</p>
+      </div>
+
+      <div class="reasons-grid">
+        <!-- EDIT: swap these six for your own real, specific reasons -->
+        <!-- Drop your 6 custom stickers into a /stickers folder next to this file, named to match each src below (e.g. stickers/smile.png). Square PNGs with transparent backgrounds work best. -->
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker1.jpeg" alt="">
+              <span class="flip-label">Your Smile</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>It's the first thing I look for in every room, and it still makes my heart skip.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker2.jpeg" alt="">
+              <span class="flip-label">Your Kindness</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>You take care of everyone around you without ever asking for anything back.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker3.jpeg" alt="">
+              <span class="flip-label">Your Laugh</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Still my favorite sound in the entire world, especially the one you try to hide.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker4.png" alt="">
+              <span class="flip-label">Little Things</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>How you remember the tiny details I mention once, like they mattered to you too.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker5.png" alt="">
+              <span class="flip-label">Your Strength</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>The way you face hard days with grace and never lose your softness.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card anim-on-scroll" type="button">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <img class="flip-icon" src="sticker/sticker6.png" alt="">
+              <span class="flip-label">Just You</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>My best friend, my safe place, and still my favorite person after all this time.</p>
+            </div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 4B · INTERACTIVE HUG METER -->
+    <section class="hug-section">
+      <p class="hug-kicker anim-on-scroll">just for you</p>
+      <h2 class="hug-title anim-on-scroll">Send Me A Hug</h2>
+      <p class="hug-instruction anim-on-scroll">press and hold the heart</p>
+
+      <div class="hug-meter-wrap anim-on-scroll">
+        <canvas id="hugParticles" class="hug-particles-canvas"></canvas>
+
+        <svg class="hug-ring" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="hug-ring-bg" cx="100" cy="100" r="90"></circle>
+          <circle class="hug-ring-fill" id="hugRingFill" cx="100" cy="100" r="90"></circle>
+        </svg>
+
+        <button class="hug-heart-btn" id="hugHeartBtn" type="button" aria-label="Press and hold to send a hug">
+          <span class="hug-heart-glow" aria-hidden="true"></span>
+          <span class="hug-heart-icon" aria-hidden="true">🤍</span>
+        </button>
+
+        <div class="hug-badge" id="hugBadge"></div>
+      </div>
+
+      <p class="hug-percent" id="hugPercent">Hug Power: 0%</p>
+      <p class="hug-status" id="hugStatus">Sending 0 hugs... 💕</p>
+    </section>
+
+    <div class="hug-complete-overlay" id="hugCompleteOverlay" aria-hidden="true">
+      <div class="hug-complete-inner">
+        <p class="hug-complete-emoji">🤍 💗 🤍</p>
+        <h3>Ultimate Hug, Delivered</h3>
+        <p>Consider yourself hugged — completely, and forever.</p>
+        <button class="hug-complete-close" id="hugCompleteClose" type="button">close</button>
+      </div>
+    </div>
+
+    <!-- SECTION 5 · POLAROID GALLERY -->
+    <section class="polaroid-section">
+
+      <div class="polaroid-header anim-on-scroll">
+        <h2 class="polaroid-title">Our 2 Years Together</h2>
+      </div>
+
+      <div class="polaroid-container">
+
+        <div class="polaroid-card p-1 anim-on-scroll">
+          <div class="washi-tape tape-left"></div>
+          <div class="photo-frame">
+            <img src="polaroid/1.jpg" alt="Memory 1">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+
+        <div class="polaroid-card p-2 anim-on-scroll">
+          <div class="washi-tape tape-right"></div>
+          <div class="photo-frame">
+            <img src="/polaroid/2.jpg" alt="Memory 2">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+
+        <div class="polaroid-card p-3 anim-on-scroll">
+          <div class="washi-tape tape-center"></div>
+          <div class="photo-frame">
+            <img src="polaroid/3.jpg" alt="Memory 3">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+
+        <div class="polaroid-card p-4 anim-on-scroll">
+          <div class="washi-tape tape-left"></div>
+          <div class="photo-frame">
+            <img src="polaroid/4.jpg" alt="Memory 4">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6 · OUR TIMELINE -->
+    <section class="timeline-section">
+      <div class="timeline-header anim-on-scroll">
+        <p class="timeline-kicker">how we got here</p>
+        <h2 class="timeline-title">Our Little Timeline</h2>
+      </div>
+
+      <!-- EDIT: replace these dates & captions with your real story -->
+      <ol class="timeline-list">
+        <li class="timeline-item anim-on-scroll">
+          <span class="timeline-dot"></span>
+          <span class="timeline-date">The Beginning</span>
+          <h3>The Day We Met</h3>
+          <p>Neither of us knew it yet, but that was the day everything changed for the better.</p>
+        </li>
+        <li class="timeline-item anim-on-scroll">
+          <span class="timeline-dot"></span>
+          <span class="timeline-date">First Date</span>
+          <h3>Butterflies & Nerves</h3>
+          <p>I still remember exactly what you were wearing, and how badly I wanted to see you again.</p>
+        </li>
+        <li class="timeline-item anim-on-scroll">
+          <span class="timeline-dot"></span>
+          <span class="timeline-date">The Words</span>
+          <h3>First "I Love You"</h3>
+          <p>Terrifying to say out loud, and the truest thing I'd ever felt.</p>
+        </li>
+        <li class="timeline-item anim-on-scroll">
+          <span class="timeline-dot"></span>
+          <span class="timeline-date">Adventures</span>
+          <h3>Our Little Sneek Together</h3>
+          <p>Sneeking around the city, making memories together.</p>
+        </li>
+        <li class="timeline-item anim-on-scroll timeline-item-today">
+          <span class="timeline-dot"></span>
+          <span class="timeline-date">Today</span>
+          <h3>2 Years & Counting</h3>
+          <p>Here we are — still choosing each other, still so in love.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SECTION 6B · FINGER-TRAIL SECRET NOTE -->
+    <section class="trail-section">
+      <p class="trail-kicker anim-on-scroll">a secret, just for you</p>
+      <h2 class="trail-title anim-on-scroll">Draw To Find Out</h2>
+      <p class="trail-instruction anim-on-scroll">trace your finger over the card</p>
+
+      <div class="trail-canvas-wrap anim-on-scroll">
+        <div class="trail-hidden-note" id="trailHiddenNote">
+          <!-- EDIT: put your own secret message here -->
+          <p>You are my favorite hello<br>and my hardest goodbye.<br>I love you, endlessly. 🤍</p>
+        </div>
+        <canvas id="trailCanvas" class="trail-canvas"></canvas>
+        <div class="trail-sparkle-field" id="trailSparkleField" aria-hidden="true"></div>
+      </div>
+
+      <button class="trail-clear-btn" id="trailClearBtn" type="button">clear canvas ✦</button>
+    </section>
+
+    <!-- SECTION 7 · LOVE LETTER -->
+    <section class="letter-full-section">
+      <div class="paper-card anim-on-scroll">
+        <p class="paper-date">For you, today and always</p>
+        <!-- EDIT: replace [Her Name] and personalize this letter freely -->
+        <p class="paper-greeting">My dearest pukuu,</p>
+        <p class="paper-body">
+          Two years ago I could never have imagined how much brighter my life would become with you in it.
+          You've turned ordinary days into memories I'll treasure forever, and you've loved me through my best
+          and my worst without ever asking me to be anyone other than myself.
+        </p>
+        <p class="paper-body">
+          Thank you for your patience, your softness, and the way you make even the smallest moments feel
+          like something worth remembering. Every laugh, every quiet night in, every silly argument we've
+          made up from — all of it has only made me love you more.
+        </p>
+        <p class="paper-body">
+          I don't know what the next years will look like, but I know I want to spend every one of them
+          finding new reasons to fall for you all over again.
+        </p>
+        <p class="paper-signoff">Forever yours,</p>
+        <p class="paper-signature">— sanuu</p>
+      </div>
+    </section>
+
+    <!-- SECTION 8 · CLOSING -->
+    <section class="closing-section">
+      <p class="closing-kicker anim-on-scroll">to many more years</p>
+      <h2 class="closing-title anim-on-scroll">Forever &amp; Always</h2>
+      <p class="closing-sub anim-on-scroll">Happy 2nd Anniversary, my love. Here's to us. 🤍</p>
+
+      <button class="replay-btn anim-on-scroll" id="replayBtn" type="button">Open again 💌</button>
+
+      <p class="closing-footer">made with love, just for you</p>
+    </section>
+
+    <!-- PIXEL PET COMPANION (fixed floating widget) -->
+    <div class="pixel-pet-widget" id="pixelPet">
+      <div class="pixel-pet-bubble" id="petBubble">
+        <span id="petBubbleText"></span>
+      </div>
+      <button class="pixel-pet-sprite" id="petSprite" type="button" aria-label="Say hi to your pixel pet">
+        <div class="pet-frame pet-idle" id="petFrame"></div>
+      </button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
